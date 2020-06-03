@@ -7,7 +7,6 @@
         }))
     相等于
     SELECT ... FROM users user WHERE user.registered = true AND (user.firstName = 'Timber' OR user.lastName = 'Saw')
-
 </br>
 一对一连表查询：
 
@@ -19,3 +18,13 @@
 一对多连表查询：
 
             leftJoinAndMapMany
+            
+            let qb = await getConnection()
+              .createQueryBuilder(Player, 'player')
+              .orderBy('player.id', 'DESC')
+              .leftJoinAndMapMany(
+                'player.rake_income',
+                RakeInCome,
+                'rake_income',
+                'player.id = rake_income.player_id'
+              )
