@@ -28,3 +28,6 @@
                 'rake_income',
                 'player.id = rake_income.player_id'
               )
+求和和求数量:
+        select('SUM(player.gold)','allGold')
+        select('COUNT(player.id)','playerCount')
